@@ -1,4 +1,9 @@
 ## Ubuntu
+
+### Ubuntu Releases
+#### LTS Releases
+- [Ubuntu 20.04.3 LTS (Focal Fossa)](http://releases.ubuntu.com/focal/)
+- [Ubuntu 18.04.6 LTS (Bionic Beaver)](http://releases.ubuntu.com/bionic/)
 ### Ubuntu Install
 #### 1.Download the Ubuntu image
 - [Ubuntu Releases](http://releases.ubuntu.com)

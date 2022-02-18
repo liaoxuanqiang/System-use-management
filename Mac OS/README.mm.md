@@ -207,4 +207,21 @@
   pyenv local <python版本> # local 本地设置 只影响所在文件夹
   pyenv 的 global、local、shell 的优先级关系是：shell > local > global
   ```
+##### Node.js
+- ```bash
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash # 安装 nvm
 
+  zsh
+  nvm --version # 查看版本信息
+  0.39.1
+  nvm version  # 查看当前 node 的版本
+  nvm install stable # 安装最新稳定版 node
+  nvm ls-remote # 列出所有远程服务器的版本
+  nvm install v12.22.9 # 安装指定版本
+  nvm install <version>
+
+  nvm ls # 列出所有已安装的版本
+  nvm uninstall <version> # 卸载指定的版本
+  nvm use <version> # 切换使用指定的版本node
+  nvm current # 显示当前的版本
+  ```

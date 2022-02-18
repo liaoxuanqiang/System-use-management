@@ -19,7 +19,7 @@
   -SATA Mode Selection -> AHCI
   -Secure Boot -> Disabled
   ```
-##### 6.Install Hackintosh
+#### 6.Install Hackintosh
 ### Hackintosh EFI Configuration
 - [OpenCore Configurator](https://mackie100projects.altervista.org/download-opencore-configurator/)
 - [Clover Configurator](https://mackie100projects.altervista.org/download-clover-configurator/)

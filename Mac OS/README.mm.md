@@ -13,8 +13,8 @@
   - [`Pierpaolo` INTEL-NUC10i5FNH](https://github.com/pierpaolodimarzo/INTEL-NUC10i5FNH)
   - [`MacKonsti` nuc10i7fnh](https://github.com/mackonsti/nuc10i7fnh)
   - [OpenCore Sanity Checker](https://opencore.slowgeek.com/)
-##### 4.Replacing EFI in USB installation disk
-##### 5.Modify BIOS configuration
+#### 4.Replacing EFI in USB installation disk
+#### 5.Modify BIOS configuration
 - ```sh
   -SATA Mode Selection -> AHCI
   -Secure Boot -> Disabled

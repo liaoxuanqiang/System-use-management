@@ -181,11 +181,30 @@
 ##### Python2
 ##### Python3
 ##### pyenv
+###### 安装配置
 - ```bash
   brew install pyenv # 安装pyenv
 
   vim ~/.zshrc #修改配置文件
   alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew' #将此内容写入到 ~/.zshrc 配置文件
   ```
-
+###### 版本安装
+- ```bash
+  pyenv versions # 查看已经安装的Python版本
+  pyenv version # 查看当前的 Python 版本
+  pyenv install -l # 查看可安装的版本
+  
+  pyenv install pypy3.8-7.3.7 # 安装与卸载 pypy3.8-7.3.7
+  pyenv uninstall pypy3.8-7.3.7
+  所安装的版本都在 ~/.pyenv/versions目录下
+  ```
+###### 版本切换
+- ```bash
+  pyenv global <python版本> # global 全局设置 一般不建议改变全局设置
+  pyenv shell <python版本> # shell 会话设置 只影响当前的shell会话
+  
+  pyenv shell --unset # 取消 shell 会话的设置
+  pyenv local <python版本> # local 本地设置 只影响所在文件夹
+  pyenv 的 global、local、shell 的优先级关系是：shell > local > global
+  ```
 

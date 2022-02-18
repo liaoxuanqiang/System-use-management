@@ -63,6 +63,38 @@
   defaults write com.apple.dock springboard-columns Default # 恢复默认的行数
   killall Dock # 重启 Dock 生效
   ```
+
+### Development deployment
+#### 1.Install and configure [Git](https://git-scm.com/download/mac)
+- ```bash
+  brew install git #使用Homebrew安装Git
+  brew install git-gui #使用Homebrew安装 git-gui
+  或者直接安装Xcode
+
+  git config --global user.email "liaoxuanqiang@live.com" # 配置邮箱
+  git config --global user.name "liaoxuanqiang" # 配置用户名
+  ssh-keygen -t rsa -C "liaoxuanqiang@live.com" # 创建ssh key
+  cat .ssh/id_rsa.pub # 查看.ssh/id_rsa.pub文件并复制key,在GitHub设置中添加ssh key
+  ssh -T git@github.com # 链接验证
+  ```
+#### 2.Install [VSCode](https://code.visualstudio.com) and add plugins
+#### 3.Configure proxy
+- ```bash
+  git config --global http.proxy 'http://127.0.0.1:7890' #设置理端口为7890
+  git config --global https.proxy 'http://127.0.0.1:7890'
+  git config --global http.proxy 'socks5://127.0.0.1:7890' #设置socks5代理端口为7890
+  git config --global https.proxy 'socks5://127.0.0.1:7890'
+  
+  git config --global --unset http.proxy #取消设置git代理
+  git config --global --unset https.proxy
+
+  git config --global --get http.proxy #查看Git代理设置
+  git config --global --get https.proxy
+
+  cat ~/.gitconfig # 查看git配置
+  git config -l # 或者也可以这样查看git的配置
+  ```
+
 ### Software installation and configuration
 #### iTerm2
 #### Homebrew
@@ -105,3 +137,55 @@
 - ```bash
   sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" # 安装卡的话就挂代理
   ```
+##### 主题
+- ```bash
+  vim ~/.zshrc #修改配置文件
+
+  ZSH_THEME=robbyrussell #在配置文件中修改此行（"="后面填写自己的主题）
+  ls -l ~/.oh-my-zsh/themes # 查看自带的主题
+  ```
+##### 插件
+###### autojump
+- ```bash
+  brew install autojump
+
+  vim ~/.zshrc 
+  plugins=(其他的插件 autojump) #在 ~/.zshrc 中配置此行
+  ```
+#### proxychains-ng
+##### 安装配置
+- ```bash
+  brew install proxychains-ng # 安装
+  vim /usr/local/etc/proxychains.conf # 配置文件
+  socks5 127.0.0.1 7890 #修改配置文件结尾的 socks4 127.0.0.1 9095
+  ```
+##### 常用命令
+- ```bash
+  proxychains4 curl https://www.google.com.hk # 代理终端基本示例
+  proxychains4 -q /bin/bash # 全局代理 bash shell
+  proxychains4 -q /bin/zsh # 全局代理 zsh shell
+  ```
+#### Vim
+- ```bash
+  vim ~/.vimrc #在用户目录下新建一个 vim 的配置文件
+
+  编辑内容如下：
+  set nu                " 显示行号
+  colorscheme desert    " 颜色显示方案
+  syntax on             " 打开语法高亮
+
+  ls /usr/share/vim/vim*/colors #查看其他自带的配色方案
+  ```
+#### Git
+#### Python
+##### Python2
+##### Python3
+##### pyenv
+- ```bash
+  brew install pyenv # 安装pyenv
+
+  vim ~/.zshrc #修改配置文件
+  alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew' #将此内容写入到 ~/.zshrc 配置文件
+  ```
+
+

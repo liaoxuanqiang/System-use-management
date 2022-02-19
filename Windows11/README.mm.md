@@ -61,6 +61,94 @@
 - ```bash
   git config --global credential.helper "/mnt/c/Program\ Files/Git/mingw64/libexec/git-core/git-credential-manager-core.exe"
   ```
+#### Get started with databases on Windows Subsystem for Linux
+##### Install MySQL
+###### 1.Open your WSL terminal (ie. Ubuntu).
+###### 2.Update your Ubuntu packages
+- ```bash
+  sudo apt update
+  ```
+###### 3.Once the packages have updated, install MySQL
+- ```bash
+  sudo apt install mysql-server
+  ```
+###### 4.Confirm installation and get the version number
+- ```bash
+  mysql --version
+  ```
+##### Install PostgreSQL
+###### 1.Open your WSL terminal (ie. Ubuntu).
+###### 2.Update your Ubuntu packages
+- ```bash
+  sudo apt update
+  ```
+###### 3.Once the packages have updated, install PostgreSQL (and the -contrib package which has some helpful utilities)
+- ```bash
+  sudo apt install postgresql postgresql-contrib
+  ```
+###### 4.Confirm installation and get the version number
+- ```bash
+  psql --version
+  ```
+##### Install MongoDB
+###### 1.Open your WSL terminal (ie. Ubuntu) and go to your home directory
+- ```bash
+  cd ~
+  ```
+###### 2.Update your Ubuntu packages
+- ```bash
+  sudo apt update
+  ```
+###### 3.Import the public key used by the MongoDB package management system
+- ```bash
+  wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add -
+  ```
+###### 4.Create a list file for MongoDB
+- ```bash
+  echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/5.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list
+  ```
+###### 5.Reload local package database
+- ```bash
+  sudo apt-get update
+  ```
+###### 6.Install MongoDB packages
+- ```bash
+  sudo apt-get install -y mongodb-org
+  ```
+###### 7.Confirm installation and get the version number
+- ```bash
+  mongod --version
+  ```
+###### 8.Make a directory to store data
+- ```bash
+  mkdir -p ~/data/db
+  ```
+###### 9.Run a Mongo instance
+- ```bash
+  sudo mongod --dbpath ~/data/db
+  ```
+###### 10.Check to see that your MongoDB instance is running
+- ```bash
+  ps -e | grep 'mongod'
+  ```
+###### To exit the MongoDB Shell, use the shortcut keys: Ctrl + C
+##### Install Microsoft SQL Server
+##### Install SQLite
+###### 1.Open your WSL terminal (ie. Ubuntu).
+###### 2.Update your Ubuntu packages
+- ```bash
+  sudo apt update
+  ```
+###### 3.Once the packages have updated, install SQLite3
+- ```bash
+  sudo apt install sqlite3
+  ```
+###### 4.Confirm installation and get the version number
+- ```bash
+  sqlite3 --version
+  ```
+##### Install Redis
+
 ### Development tools
 ##### WSL
 ###### Basic commands
@@ -87,7 +175,7 @@
 ##### Windows Package Manager
 ##### PowerToys
 ##### Git
-###### 1.Install and configure [Git](https://git-scm.com/download/win)
+###### install configuration
 - ```powershell
   winget install --id Git.Git -e --source winget #使用winget tool工具安装Git
 
@@ -97,7 +185,7 @@
   cat .ssh/id_rsa.pub # 查看.ssh/id_rsa.pub文件并复制key,在GitHub设置中添加ssh key
   ssh -T git@github.com # 链接验证
   ```
-###### 2.Configure proxy
+###### Configure proxy
 - ```powershell
   git config --global http.proxy 'http://127.0.0.1:1080' #设置理端口为1080
   git config --global https.proxy 'http://127.0.0.1:1080'
@@ -112,6 +200,40 @@
 
   cat ~/.gitconfig # 查看git配置
   git config -l # 或者也可以这样查看git的配置
+  ```
+##### Databases
+###### MySQL
+- ```bash
+  sudo /etc/init.d/mysql start #启动 MySQL 服务器
+  sudo mysql_secure_installation #启动安全脚本提示符
+  sudo mysql #打开 MySQL 提示符
+  SHOW DATABASES; # 在MySQL 提示符查看可用的数据库
+  CREATE DATABASE database_name; #在MySQL 提示符创建新数据库
+  DROP DATABASE database_name; #在MySQL 提示符删除数据库
+  ```
+###### PostgreSQL
+- ```bash
+  sudo service postgresql status #检查数据库的状态
+  sudo service postgresql start #开始运行数据库
+  sudo service postgresql stop #停止运行数据库
+
+  sudo passwd postgres #为默认管理员用户 postgres 分配的密码
+  ```
+###### MongoDB
+- ```bash
+  https://raw.githubusercontent.com/mongodb/mongo/master/debian/init.d | sudo tee /etc/init.d/mongodb >/dev/null #下载 MongoDB 的 init.d 脚本
+  sudo chmod +x /etc/init.d/mongodb #分配该脚本可执行权限
+  sudo service mongodb status #检查数据库的状态
+  sudo service mongodb start #开始运行数据库
+  sudo service mongodb stop #停止运行数据库
+  mongo --eval 'db.runCommand({ connectionStatus: 1 })' #诊断命令验证你是否已连接到数据库服务器
+  ```
+###### SQLite
+- ```bash
+  sqlite3 example.db #创建名为“example.db”的测试数据库
+  .databases #查看 SQLite 数据库列表
+  .dbinfo ?DB? #查看数据库的状态
+  .exit #退出 SQLite 提示符
   ```
 ### Install software
 #### Office
@@ -135,15 +257,4 @@
 
   注册表路径为\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerSettings
   ```
-#### WSL -- install Command
-- ```powershell
-  wsl --install -d <Distribution Name> #WSL安装镜像使用命令格式
-  wsl --list --online  #查看可用 Linux 分发版的列表
-  wsl --install -d Ubuntu-20.04 #安装Ubuntu 20.04LTS
-  wsl --set-default-version 2  #将 WSL2 设置为默认版本
 
-  wsl --status   #查看更新状态，可显示 WSL 目前使用的内核版本，以及最后一次更新的时间。
-  wsl --update   #WSL更新
-  wsl --rollback  #回滚到上一次使用的 Linux 内核版本。
-  wsl --shutdown  #关闭WSL
-  ```

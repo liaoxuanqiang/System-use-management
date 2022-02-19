@@ -86,8 +86,8 @@
 ##### Windows Terminal
 ##### Windows Package Manager
 ##### PowerToys
-
-#### 1.Install and configure [Git](https://git-scm.com/download/win)
+##### Git
+###### 1.Install and configure [Git](https://git-scm.com/download/win)
 - ```powershell
   winget install --id Git.Git -e --source winget #使用winget tool工具安装Git
 
@@ -97,14 +97,13 @@
   cat .ssh/id_rsa.pub # 查看.ssh/id_rsa.pub文件并复制key,在GitHub设置中添加ssh key
   ssh -T git@github.com # 链接验证
   ```
-#### 2.Install [VSCode](https://code.visualstudio.com) and add plugins
-#### 3.Configure proxy
+###### 2.Configure proxy
 - ```powershell
   git config --global http.proxy 'http://127.0.0.1:1080' #设置理端口为1080
   git config --global https.proxy 'http://127.0.0.1:1080'
   git config --global http.proxy 'socks5://127.0.0.1:1080' #设置socks5代理端口为1080
   git config --global https.proxy 'socks5://127.0.0.1:1080'
-  
+
   git config --global --unset http.proxy #取消设置git代理
   git config --global --unset https.proxy
 

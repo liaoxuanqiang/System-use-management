@@ -1,4 +1,5 @@
 ## Windows11
+
 ### System installation
 #### 1.Check the latest Windows11 system version information
 - [ChangeWindows](https://changewindows.org/)
@@ -22,7 +23,55 @@
   ```
 #### 4.Turn off virtual memory
 #### 5.Modify Group Policy (gpedit.msc) to disable broadband reservation
-### Development deployment
+
+### Development environment
+#### Set up a WSL development environment
+##### 1.Get started
+- ```powershell
+  wsl --install
+  ```
+##### 2.Set up your Linux username and password
+##### 3.Update and upgrade packages
+- ```bash
+  sudo apt update && sudo apt upgrade
+  ```
+#### Get started using Visual Studio Code with Windows Subsystem for Linux
+##### 1.Install VS Code and the [Remote WSL extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack)
+##### 2.Update your Linux distribution
+- ```bash
+  sudo apt-get update
+  sudo apt-get install wget ca-certificates #添加 wget和 ca 证书
+  ```
+##### 3.Open a WSL project in Visual Studio Code
+- ```powershell
+  code .
+  ```
+### Development tools
+##### WSL
+###### Basic commands
+- ```powershell
+  wsl --install #安装 WSL 和 Linux 的 Ubuntu 发行版
+  wsl --install -d <Distribution Name> #安装特定的 Linux 发行版
+  wsl --list --online #列出可用的 Linux 发行版
+  wsl --list --verbose #列出已安装的 Linux 发行版
+  wsl --set-version <distribution name> <versionNumber> #将 WSL 版本设置为 1 或 2
+  wsl --set-default-version <Version> #设置默认 WSL 版本
+  wsl --set-default <Distribution Name> #设置默认 Linux 发行版
+  wsl ~ #将目录更改为主页
+  wsl --distribution <Distribution Name> --user <User Name> #通过 PowerShell 或 CMD 运行特定的 Linux 发行版
+  wsl --update #更新 WSL
+  wsl --status #检查 WSL 状态
+  wsl --help #Help 命令
+  wsl -u <Username>`, `wsl --user <Username> #以特定用户的身份运行
+  <DistributionName> config --default-user <Username> #更改发行版的默认用户
+  wsl --shutdown #关闭
+  wsl --unregister <DistributionName> #注销或卸载 Linux 发行版
+  wsl --mount <DiskPath> #装载磁盘或设备
+  ```
+##### Windows Terminal
+##### Windows Package Manager
+##### PowerToys
+
 #### 1.Install and configure [Git](https://git-scm.com/download/win)
 - ```powershell
   winget install --id Git.Git -e --source winget #使用winget tool工具安装Git
@@ -35,11 +84,11 @@
   ```
 #### 2.Install [VSCode](https://code.visualstudio.com) and add plugins
 #### 3.Configure proxy
-- ```bash
-  git config --global http.proxy 'http://127.0.0.1:7890' #设置理端口为7890
-  git config --global https.proxy 'http://127.0.0.1:7890'
-  git config --global http.proxy 'socks5://127.0.0.1:7890' #设置socks5代理端口为7890
-  git config --global https.proxy 'socks5://127.0.0.1:7890'
+- ```powershell
+  git config --global http.proxy 'http://127.0.0.1:1080' #设置理端口为1080
+  git config --global https.proxy 'http://127.0.0.1:1080'
+  git config --global http.proxy 'socks5://127.0.0.1:1080' #设置socks5代理端口为1080
+  git config --global https.proxy 'socks5://127.0.0.1:1080'
   
   git config --global --unset http.proxy #取消设置git代理
   git config --global --unset https.proxy

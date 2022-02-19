@@ -148,7 +148,19 @@
   sqlite3 --version
   ```
 ##### Install Redis
-
+###### 1.Open your WSL terminal (ie. Ubuntu).
+###### 2.Update your Ubuntu packages
+- ```bash
+  sudo apt update
+  ```
+###### 3.Once the packages have updated, install Redis
+- ```bash
+  sudo apt install redis-server
+  ```
+###### 4.Confirm installation and get the version number
+- ```bash
+  redis-server --version
+  ```
 ### Development tools
 ##### WSL
 ###### Basic commands
@@ -234,6 +246,12 @@
   .databases #查看 SQLite 数据库列表
   .dbinfo ?DB? #查看数据库的状态
   .exit #退出 SQLite 提示符
+  ```
+###### Redis
+- ```bash
+  sudo service redis-server start #开始运行 Redis 服务器
+  redis-cli ping #检查 redis 是否正常工作（redis-cli 是与 Redis 对话的命令行接口实用程序）
+  sudo service redis-server stop #停止运行 Redis 服务器
   ```
 ### Install software
 #### Office

@@ -161,6 +161,9 @@
 - ```bash
   redis-server --version
   ```
+#### Get started with Docker remote containers on WSL 2
+##### 1.Install Docker Desktop
+
 ### Development tools
 ##### WSL
 ###### Basic commands

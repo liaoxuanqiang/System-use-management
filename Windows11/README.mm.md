@@ -23,11 +23,9 @@
 #### 4.Turn off virtual memory
 #### 5.Modify Group Policy (gpedit.msc) to disable broadband reservation
 ### Development deployment
-#### 1.Install and configure [Git](https://git-scm.com/download/mac)
-- ```bash
-  brew install git #使用Homebrew安装Git
-  brew install git-gui #使用Homebrew安装 git-gui
-  或者直接安装Xcode
+#### 1.Install and configure [Git](https://git-scm.com/download/win)
+- ```powershell
+  winget install --id Git.Git -e --source winget #使用winget tool工具安装Git
 
   git config --global user.email "liaoxuanqiang@live.com" # 配置邮箱
   git config --global user.name "liaoxuanqiang" # 配置用户名

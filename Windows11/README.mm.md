@@ -46,6 +46,21 @@
 - ```powershell
   code .
   ```
+#### Get started using Git on Windows Subsystem for Linux
+##### 1.Git can be installed on Windows AND on WSL
+##### 2.Installing Git
+- ```bash
+  sudo apt-get install git
+  ```
+##### 3.Git config file setup
+- ```bash
+  git config --global user.name "liaoxuanqiang"
+  git config --global user.email "liaoxuanqiang@live.com"
+  ```
+##### 4.Git Credential Manager setup
+- ```bash
+  git config --global credential.helper "/mnt/c/Program\ Files/Git/mingw64/libexec/git-core/git-credential-manager-core.exe"
+  ```
 ### Development tools
 ##### WSL
 ###### Basic commands

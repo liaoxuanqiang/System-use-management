@@ -163,6 +163,12 @@
   ```
 #### Get started with Docker remote containers on WSL 2
 ##### 1.Install Docker Desktop
+##### 2.Develop in remote containers using VS Code
+
+- [Install the VS Code Remote-WSL extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl)
+- [Install the VS code Remote-Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+- [Install the VS Code Docker extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)
+
 
 ### Development tools
 ##### WSL
@@ -255,6 +261,15 @@
   sudo service redis-server start #开始运行 Redis 服务器
   redis-cli ping #检查 redis 是否正常工作（redis-cli 是与 Redis 对话的命令行接口实用程序）
   sudo service redis-server stop #停止运行 Redis 服务器
+  ```
+##### Docker
+- ```bash
+  docker #列出 Docker CLI 中可用的命令
+  docker <COMMAND> --help #列出特定命令的信息
+  docker image ls --all #列出计算机上的 docker 映像
+  docker container ls --all #列出计算机上的容器
+  docker ps -a #如果没有 -a 显示全部标志，则仅显示正在运行的容器
+  docker info #列出有关 Docker 安装的系统范围的信息
   ```
 ### Install software
 #### Office

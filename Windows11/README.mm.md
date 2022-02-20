@@ -63,103 +63,43 @@
   ```
 #### Get started with databases on Windows Subsystem for Linux
 ##### Install MySQL
-###### 1.Open your WSL terminal (ie. Ubuntu).
-###### 2.Update your Ubuntu packages
 - ```bash
-  sudo apt update
-  ```
-###### 3.Once the packages have updated, install MySQL
-- ```bash
-  sudo apt install mysql-server
-  ```
-###### 4.Confirm installation and get the version number
-- ```bash
-  mysql --version
+  sudo apt update #更新 Ubuntu 包
+  sudo apt install mysql-server #安装 MySQL
+  mysql --version #确认安装并获取版本号
   ```
 ##### Install PostgreSQL
-###### 1.Open your WSL terminal (ie. Ubuntu).
-###### 2.Update your Ubuntu packages
 - ```bash
-  sudo apt update
-  ```
-###### 3.Once the packages have updated, install PostgreSQL (and the -contrib package which has some helpful utilities)
-- ```bash
-  sudo apt install postgresql postgresql-contrib
-  ```
-###### 4.Confirm installation and get the version number
-- ```bash
-  psql --version
+  sudo apt update #更新 Ubuntu 包
+  sudo apt install postgresql postgresql-contrib #安装 PostgreSQL（和 -contrib 包，其中包含一些有用的实用程序）
+  psql --version #确认安装并获取版本号
   ```
 ##### Install MongoDB
-###### 1.Open your WSL terminal (ie. Ubuntu) and go to your home directory
 - ```bash
-  cd ~
+  cd ~ #转到主目录
+  sudo apt update #Ubuntu 包
+  wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add - #导入 MongoDB 包管理系统使用的公钥
+  echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/5.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list #为 MongoDB 创建一个列表文件
+  sudo apt-get update #重新加载本地包数据库
+  sudo apt-get install -y mongodb-org #安装 MongoDB 包
+  mongod --version #确认安装并获取版本号
+  mkdir -p ~/data/db #创建用于存储数据的目录
+  sudo mongod --dbpath ~/data/db #运行 Mongo 实例
+  ps -e | grep 'mongod' #检查 MongoDB 实例是否正在运行
+  若要退出 MongoDB Shell，请使用快捷键：Ctrl + C
   ```
-###### 2.Update your Ubuntu packages
-- ```bash
-  sudo apt update
-  ```
-###### 3.Import the public key used by the MongoDB package management system
-- ```bash
-  wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add -
-  ```
-###### 4.Create a list file for MongoDB
-- ```bash
-  echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/5.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list
-  ```
-###### 5.Reload local package database
-- ```bash
-  sudo apt-get update
-  ```
-###### 6.Install MongoDB packages
-- ```bash
-  sudo apt-get install -y mongodb-org
-  ```
-###### 7.Confirm installation and get the version number
-- ```bash
-  mongod --version
-  ```
-###### 8.Make a directory to store data
-- ```bash
-  mkdir -p ~/data/db
-  ```
-###### 9.Run a Mongo instance
-- ```bash
-  sudo mongod --dbpath ~/data/db
-  ```
-###### 10.Check to see that your MongoDB instance is running
-- ```bash
-  ps -e | grep 'mongod'
-  ```
-###### To exit the MongoDB Shell, use the shortcut keys: Ctrl + C
 ##### Install Microsoft SQL Server
 ##### Install SQLite
-###### 1.Open your WSL terminal (ie. Ubuntu).
-###### 2.Update your Ubuntu packages
 - ```bash
-  sudo apt update
-  ```
-###### 3.Once the packages have updated, install SQLite3
-- ```bash
-  sudo apt install sqlite3
-  ```
-###### 4.Confirm installation and get the version number
-- ```bash
-  sqlite3 --version
+  sudo apt update #更新 Ubuntu 包
+  sudo apt install sqlite3 #安装 SQLite3
+  sqlite3 --version #确认安装并获取版本号
   ```
 ##### Install Redis
-###### 1.Open your WSL terminal (ie. Ubuntu).
-###### 2.Update your Ubuntu packages
 - ```bash
-  sudo apt update
-  ```
-###### 3.Once the packages have updated, install Redis
-- ```bash
-  sudo apt install redis-server
-  ```
-###### 4.Confirm installation and get the version number
-- ```bash
-  redis-server --version
+  sudo apt update #更新 Ubuntu 包
+  sudo apt install redis-server #安装 Redis
+  redis-server --version #确认安装并获取版本号
   ```
 #### Get started with Docker remote containers on WSL 2
 ##### 1.Install Docker Desktop
@@ -191,6 +131,15 @@
   wsl --shutdown #关闭
   wsl --unregister <DistributionName> #注销或卸载 Linux 发行版
   wsl --mount <DiskPath> #装载磁盘或设备
+  ```
+###### Run Linux GUI apps on the Windows Subsystem for Linux
+- ```bash
+  sudo apt update #更新发行版中的包
+  sudo apt install gedit -y #安装 Gedit
+  sudo apt install gimp -y #安装 GIMP
+  sudo apt install vlc -y #安装 VLC
+  sudo apt install x11-apps -y #安装 X11 应用
+
   ```
 ##### Windows Terminal
 ##### Windows Package Manager
